@@ -3,7 +3,6 @@ import React from 'react'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { Login } from './components/Login';
 import Home from './components/Home';
-import Analytics from './components/Analytics';
 
 const App = () => {
 
@@ -17,10 +16,7 @@ const App = () => {
             path: '/home',
             element: <Home />
 
-        },{
-            path: "/analytics",
-            element: <Analytics/>
-        }
+        },
     ])
 
 
