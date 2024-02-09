@@ -5,7 +5,7 @@ import { server } from "../utilis/constant";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { authenticateUser } from "../Redux/userSlice";
-
+import config from "./config";
 
 export const Login = () => {
 
@@ -17,6 +17,7 @@ export const Login = () => {
     const [password,setpassword] = useState("");
 
     const dispatch = useDispatch();
+    console.log(window.location.hostname);
 
     const handleButtonClick = async() => {
         // validate form data
@@ -41,7 +42,10 @@ export const Login = () => {
                 })
                 toast.success(data.message);
                 dispatch(authenticateUser());
-                window.location.replace("http://localhost:3000/home")
+                const redirectUrl = config.apiBaseUrl + config.homePath;
+
+
+                window.location.replace(redirectUrl)
 
             } catch (e) {
                 toast.error(e.response.data.message);
@@ -64,7 +68,8 @@ export const Login = () => {
                     })
                 toast.success(data.message);
                 dispatch(authenticateUser());
-                window.location.replace("http://localhost:3000/home")
+                const redirectUrl = config.apiBaseUrl + config.homePath;
+                window.location.replace(redirectUrl)
                 
 
             } catch (e) {
